@@ -22,7 +22,7 @@ body {
     background: #fff;
     padding: 1rem;
     margin-bottom: 1rem;
-    margin: 1rem 0;
+    margin: 1rem auto;
 }
 
 .pagebreak {
@@ -81,4 +81,12 @@ body {
     font-size: 11px;
     margin-top: 16px;
     color: #aaa;
+}
+
+table.table.table--header thead th {
+    background: #eee;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: 500;
 }

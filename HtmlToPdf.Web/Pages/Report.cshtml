@@ -1,4 +1,5 @@
 ﻿@page
+@using HtmlToPdf.Web.Extensions
 @model HtmlToPdf.Web.Pages.ReportModel
 @{
     ViewData["Title"] = "Report";
@@ -73,5 +74,46 @@
             </div>
         </div>
         
+        <h3 class="page-sub-title">technologies</h3>
+        <div class="border">
+            <table class="table table--header">
+                <thead>
+                    <tr>
+                        <th>technology</th>
+                        <th>sell</th>
+                        <th>rebate</th>
+                        <th>out of pocket</th>
+                        <th>usage reduction</th>
+                        <th>demand reduction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var tech in Model.Technologies)
+                    {
+                        <tr>
+                            <td>@tech.Name</td>
+                            <td>@tech.Sell.FormatMoney()</td>
+                            <td>@tech.Rebate.FormatMoney()</td>
+                            <td>@tech.OutOfPocket.FormatMoney()</td>
+                            <td>@tech.UsageReduction.FormatMoney()</td>
+                            <td>@tech.DemandReduction.FormatMoney()</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>TOTAL</td>
+                        <td>@{159_430d.FormatMoney();}</td>
+                        <td>@{65_445d.FormatMoney();}</td>
+                        <td>@{93_985d.FormatMoney();}</td>
+                        <td>29%</td>
+                        <td>8%</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <h3 class="page-sub-title">carbon emission reduction</h3>
+        <div>4 tonns</div>
     </div>
 
