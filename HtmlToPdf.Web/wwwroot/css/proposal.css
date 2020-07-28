@@ -3,6 +3,28 @@
     --secondary: #0081B0;
 }
 
+@page {
+    size: A4;
+    margin: 0;
+}
+
+body {
+    background: #eee;
+}
+
+.a4 {
+    size: A4;
+    margin: 0;
+    width: 210mm;
+    height: 297mm;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin: 1rem 0;
+}
+
 .pagebreak {
     page-break-after: always;
     break-after: always;
@@ -11,7 +33,7 @@
 .page-sub-title {
     text-transform: uppercase;
     margin: 2rem 0 1rem;
-    ont-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .page-title {
@@ -56,6 +78,7 @@
 
 .outcome-block__padding {
     height: 24px;
-    margin-left: 30%;
+    font-size: 11px;
     margin-top: 16px;
+    color: #aaa;
 }
