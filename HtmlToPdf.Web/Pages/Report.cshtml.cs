@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 
 namespace HtmlToPdf.Web.Pages
@@ -155,6 +157,25 @@ namespace HtmlToPdf.Web.Pages
                 },
             };
 
+        }
+
+        public IActionResult OnPost()
+        {
+            // Create a PDF from any existing web page
+            var renderer = new IronPdf.HtmlToPdf(new IronPdf.PdfPrintOptions
+            {
+                CustomCssUrl = "https://localhost:44345/css/proposal.css",
+                Title = "Proposal",
+                CssMediaType = IronPdf.PdfPrintOptions.PdfCssMediaType.Print,
+                PaperSize = IronPdf.PdfPrintOptions.PdfPaperSize.A4,
+            });
+            var PDF = renderer.RenderUrlAsPdf("https://localhost:44345/Report");
+            PDF.SaveAs($"report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
+
+            //var pdf = renderer.RenderHTMLFileAsPdf("template.html");
+            //pdf.SaveAs($"report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
+
+            return Redirect("/Report");
         }
     }
 
