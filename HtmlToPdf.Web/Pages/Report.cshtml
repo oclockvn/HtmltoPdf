@@ -5,12 +5,25 @@
     ViewData["Title"] = "Report";
 }
 
-<form method="post">
+<style>
+    @@page {
+        size: A4;
+        margin: 0;
+        width: 210mm;
+        height: 297mm;
+    }
+
+    body {
+        background: #eee;
+    }
+</style>
+
+<form method="post" style="display: none;">
     <button type="submit">Print</button>
 </form>
 
-    <div class="a4">
-        <h2 class="page-title">ABOUT US</h2>
+    <div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+        <h2 style="text-transform: uppercase; margin-bottom: 3rem;">ABOUT US</h2>
         <p>
             Smart Energy Answers is a Team of Solar Professionals, not just a sales and marketing company. We use our own Clean Energy Council accredited installation teams and designers/engineers.          </p>
 
@@ -21,103 +34,91 @@
         <p>
             Aenean in augue ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor et lorem vel ultrices. Integer a varius mi. Donec in varius metus. Duis rutrum imperdiet mauris sit amet pharetra. Aenean vitae tortor urna.
         </p>
-        <div class="pagebreak"></div>
     </div>
+    <div style="page-break-after: always; border: 1px solid #eee;"></div>
 
-    <div class="a4">
-        <h2 class="page-title">OVERVIEW</h2>
-        <div>
-            <div class="row">
-                <div class="col-3">
-                    <div class="overview-block">
-                        <h4 class="overview-block__title">value</h4>
-                        <div class="overview-block__value">$2.8M</div>
+    <div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+        <h2 style="text-transform: uppercase; margin-bottom: 3rem;">OVERVIEW</h2>
+        <div style="display: block;">
+            <div>
+                @foreach (var metric in Model.Metrics)
+                {
+                    <div style="display: inline-block; width: 50mm; float: left; padding: 0 2mm;">
+                        <div style="background: #0081b0; color: #fff; text-align: center; padding: 1rem; border-radius: 4px;">
+                            <h4 style="text-transform: uppercase; font-size: 17px;">@metric.Title</h4>
+                            <div style="font-size: 2rem;">@metric.Value</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-3">
-                    <div class="overview-block">
-                        <h4 class="overview-block__title">rebate</h4>
-                        <div class="overview-block__value">$9.7k</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="overview-block">
-                        <h4 class="overview-block__title">out of pocket</h4>
-                        <div class="overview-block__value">$2.8M</div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="overview-block">
-                        <h4 class="overview-block__title">roi</h4>
-                        <div class="overview-block__value">5 years</div>
-                    </div>
-                </div>
+                }
+            <div style="clear: both;"></div>
             </div>
         </div>
 
-        <h3 class="page-sub-title">project outcome</h3>
-        <div class="border py-3">
-            <div class="align-items-center d-flex py-3">
-                <div class="outcome-block">
-                    <h4 class="outcome-block__title">bill reduction</h4>
-                    <div class="outcome-block__value">$55.00k&nbsp;&nbsp;30%</div>
-                    <div class="outcome-block__padding"></div>
+        <h3 style="text-transform: uppercase; margin: 2rem 0 1rem; font-size: 1.5rem;">project outcome</h3>
+        <div style="border: 1px solid #dee2e6; padding: 2rem 0; text-align: center;">
+            <div>
+                <div style="display: inline-block; float: left; width: 62.71mm;">
+                    <h4 style="text-transform: uppercase; font-size: 1rem; font-weight: 500;">bill reduction</h4>
+                    <div style="color: #d90a7e; font-size: 1.5rem; font-weight: 600;">$55.00k&nbsp;&nbsp;30%</div>
+                    <div style="height: 24px; font-size: 11px; margin-top: 16px; color: #aaa;"></div>
                 </div>
-                <span style="font-size: 30px">+</span>
-                <div class="outcome-block">
-                    <h4 class="outcome-block__title">other savings</h4>
-                    <div class="outcome-block__value">$12.00k</div>
-                    <div class="outcome-block__padding"></div>
+                <span style="font-size: 30px; float: left;">+</span>
+                <div style="display: inline-block; float: left; width: 62.71mm;">
+                    <h4 style="text-transform: uppercase; font-size: 1rem; font-weight: 500;">other savings</h4>
+                    <div style="color: #d90a7e; font-size: 1.5rem; font-weight: 600;">$12.00k</div>
+                    <div style="height: 24px; font-size: 11px; margin-top: 16px; color: #aaa;"></div>
                 </div>
-                <span style="font-size: 30px">=</span>
-                <div class="outcome-block">
-                    <h4 class="outcome-block__title">total savings</h4>
-                    <div class="outcome-block__value">$67.00k</div>
-                    <div class="outcome-block__padding">Figures based on a 5 years average</div>
+                <span style="font-size: 30px; float: left;">=</span>
+                <div style="display: inline-block; float: left; width: 62.71mm;">
+                    <h4 style="text-transform: uppercase; font-size: 1rem; font-weight: 500;">total savings</h4>
+                    <div style="color: #d90a7e; font-size: 1.5rem; font-weight: 600;">$67.00k</div>
+                    <div style="height: 24px; font-size: 11px; margin-top: 16px; color: #aaa;">Figures based on a 5 years average</div>
                 </div>
+                <div style="clear: both;"></div>
             </div>
         </div>
         
-        <h3 class="page-sub-title">technologies</h3>
-        <div class="border">
-            <table class="table table--header">
+        <h3 style="text-transform: uppercase; margin: 2rem 0 1rem; font-size: 1.5rem;">technologies</h3>
+        <div style="border: 1px solid #dee2e6">
+            <table style="width: 100%; color: #212529; border-collapse: collapse;">
                 <thead>
                     <tr>
-                        <th>technology</th>
-                        <th>sell</th>
-                        <th>rebate</th>
-                        <th>out of pocket</th>
-                        <th>usage reduction</th>
-                        <th>demand reduction</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">technology</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">sell</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">rebate</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">out of pocket</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">usage reduction</th>
+                        <th style="background: #eee; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">demand reduction</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var tech in Model.Technologies)
                     {
                         <tr>
-                            <td>@tech.Name</td>
-                            <td>@tech.Sell.FormatMoney()</td>
-                            <td>@tech.Rebate.FormatMoney()</td>
-                            <td>@tech.OutOfPocket.FormatMoney()</td>
-                            <td>@tech.UsageReduction.FormatMoney()</td>
-                            <td>@tech.DemandReduction.FormatMoney()</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.Name</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.Sell.FormatMoney()</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.Rebate.FormatMoney()</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.OutOfPocket.FormatMoney()</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.UsageReduction.FormatMoney()</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@tech.DemandReduction.FormatMoney()</td>
                         </tr>
                     }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td>TOTAL</td>
-                        <td>@{159_430d.FormatMoney();}</td>
-                        <td>@{65_445d.FormatMoney();}</td>
-                        <td>@{93_985d.FormatMoney();}</td>
-                        <td>29%</td>
-                        <td>8%</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">TOTAL</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">@{159_430d.FormatMoney();}</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">@{65_445d.FormatMoney();}</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">@{93_985d.FormatMoney();}</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">29%</td>
+                        <td style="padding: .75rem; background: #FBE7F2;">8%</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
 
-        <h3 class="page-sub-title">carbon emission reduction</h3>
-        <div>4 tonns</div>
+        <h3 style="text-transform: uppercase; margin: 2rem 0 1rem; font-size: 1.5rem;">carbon emission reduction</h3>
+        <div style="background: #9C9D9B; padding: 10px 16px; width: 200px; font-weight: 600; border-radius: 4px; margin-bottom: 1rem;">4 tonns</div>
     </div>
+    <div style="page-break-after: always; border: 1px solid #eee;"></div>
 

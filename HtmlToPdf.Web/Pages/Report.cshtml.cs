@@ -8,6 +8,7 @@ namespace HtmlToPdf.Web.Pages
     public class ReportModel : PageModel
     {
         public List<Technology> Technologies { get; set; } = new List<Technology>();
+        public List<OverviewMetric> Metrics { get; set; } = new List<OverviewMetric>();
 
         public void OnGet()
         {
@@ -157,6 +158,13 @@ namespace HtmlToPdf.Web.Pages
                 },
             };
 
+            Metrics = new List<OverviewMetric>
+            {
+                new OverviewMetric("Value", "$2.8M"),
+                new OverviewMetric("Rebate", "$9.7k"),
+                new OverviewMetric("Out of pocket", "$2.8M"),
+                new OverviewMetric("ROI", "5 years")
+            };
         }
 
         public IActionResult OnPost()
@@ -170,7 +178,7 @@ namespace HtmlToPdf.Web.Pages
                 PaperSize = IronPdf.PdfPrintOptions.PdfPaperSize.A4,
             });
             var PDF = renderer.RenderUrlAsPdf("https://localhost:44345/Report");
-            PDF.SaveAs($"report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
+            PDF.SaveAs($"dist/report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
 
             //var pdf = renderer.RenderHTMLFileAsPdf("template.html");
             //pdf.SaveAs($"report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
@@ -187,5 +195,17 @@ namespace HtmlToPdf.Web.Pages
         public double OutOfPocket { get; set; }
         public double UsageReduction { get; set; }
         public double DemandReduction { get; set; }
+    }
+
+    public class OverviewMetric
+    {
+        public string Title { get; set; }
+        public string Value { get; set; }
+
+        public OverviewMetric(string title, string value)
+        {
+            Title = title;
+            Value = value;
+        }
     }
 }
