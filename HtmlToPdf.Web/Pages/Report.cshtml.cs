@@ -172,10 +172,14 @@ namespace HtmlToPdf.Web.Pages
             // Create a PDF from any existing web page
             var renderer = new IronPdf.HtmlToPdf(new IronPdf.PdfPrintOptions
             {
-                CustomCssUrl = "https://localhost:44345/css/proposal.css",
                 Title = "Proposal",
                 CssMediaType = IronPdf.PdfPrintOptions.PdfCssMediaType.Print,
                 PaperSize = IronPdf.PdfPrintOptions.PdfPaperSize.A4,
+                PrintHtmlBackgrounds = true,
+                MarginBottom = 0,
+                MarginLeft = 0,
+                MarginRight = 0,
+                MarginTop = 0
             });
             var PDF = renderer.RenderUrlAsPdf("https://localhost:44345/Report");
             PDF.SaveAs($"dist/report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
