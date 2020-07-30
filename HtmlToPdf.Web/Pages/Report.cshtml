@@ -214,6 +214,259 @@
     </div>
 </div>
 
+<div style="page-break-after: always; border: 1px solid #eee;"></div>
+
+<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem;">ELECTRICITY BILL SAVINGS</h2>
+
+    <div style="margin: 2rem 0 1rem;">
+        <h3 style="text-transform: uppercase; margin: 0; font-size: 1.5rem; float: left;">BILL REDUCTION</h3>
+
+        <div style="float: right;">
+            <span style="margin-right: 20px;">
+                <span style="width: 16px; height: 16px; background: #4D80B0; border-radius: 50%; display: inline-block;"></span>
+                <b style="vertical-align: text-bottom;">Net Cost</b>
+            </span>
+            <span>
+                <span style="width: 16px; height: 16px; background: #7DD80C; border-radius: 50%; display: inline-block;"></span>
+                <b style="vertical-align: text-bottom;">Export</b>
+            </span>
+        </div>
+
+        <div style="clear: both;"></div>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+        <!-- left -->
+        <div style="display: inline-block; width: 98mm; float: left; border: 1px solid #eee;">
+            <div style="margin: 0 16px; border-bottom: 1px solid #eee; padding: 8px 0;">
+                <b>NOW</b>
+            </div>
+
+            <div style="padding: 16px; padding-top: 10mm;">
+                <div style="float: left; width: 24mm;">
+                    <span style="font-size: .8rem;">Net Cost</span>
+                    <h4 style="font-size: 1.2rem; color: #4d80b0">$100.00k</h4>
+                </div>
+                <!-- left -->
+
+                <div style="float: right; width: 65mm; height: 65mm; background: #eee;">
+                    <div>chart</div>
+                </div>
+                <!-- right -->
+
+                <div style="clear: both; height: 15mm;"></div>
+            </div>
+
+            <div>
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">USAGE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.UsageNow)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">DEMAND</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.DemandNow)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">FIXED</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.FixNow)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">EXPORT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.ExportNow)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td style="padding: .75rem; vertical-align: top; background: #FBE7F2;" colspan="3">NET COST</td>
+                            <td style="padding: .75rem; vertical-align: top; background: #FBE7F2;">$4,223.45</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- right -->
+        <div style="display: inline-block; width: 98mm; float: right; border: 1px solid #eee;">
+            <div style="margin: 0 16px; border-bottom: 1px solid #eee; padding: 8px 0;">
+                <b style="display: inline-block; width: 30mm;">AFTER</b>
+                <span>Bill Reduction</span>
+                <b style="color: #D90A7E; margin: 0 8px;">$55.00k</b>
+                <b style="color: #D90A7E">30%</b>
+            </div>
+
+            <div style="padding: 16px; padding-top: 10mm;">
+                <div style="float: left; width: 24mm;">
+                    <span style="font-size: .8rem;">Net Cost</span>
+                    <h4 style="font-size: 1.2rem; color: #4d80b0">$45.00k</h4>
+
+                    <div></div>
+                    <span style="font-size: .8rem;">Export</span>
+                    <h4 style="font-size: 1.2rem; color: #7DD80C">-$40.00k</h4>
+                </div>
+                <!-- left -->
+
+                <div style="float: right; width: 65mm; height: 65mm; background: #eee;">
+                    <div>chart</div>
+                </div>
+                <!-- right -->
+
+                <div style="clear: both; text-align: right; font-size: .8rem; color: #aaa; height: 15mm; padding-top: 10mm;">
+                    Figures based on a 5 year average
+                </div>
+            </div>
+
+            <div>
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">USAGE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.UsageAfter)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">DEMAND</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.DemandAfter)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">FIXED</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.FixAfter)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;" colspan="4">EXPORT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bill in Model.ExportAfter)
+                        {
+                            <tr>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Description</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Kwh</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Qty</td>
+                                <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@bill.Cost</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td style="padding: .75rem; vertical-align: top; background: #FBE7F2;" colspan="3">NET COST</td>
+                            <td style="padding: .75rem; vertical-align: top; background: #FBE7F2;">$4,116.67</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+
+        <div style="clear: both;"></div>
+    </div>
+
+    <div style="page-break-after: always; border: 1px solid #eee;"></div>
+
+</div>
+
 @section Scripts {
     <script src="~/js/site.js"></script>
 }

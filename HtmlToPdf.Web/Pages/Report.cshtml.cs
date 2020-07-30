@@ -10,6 +10,18 @@ namespace HtmlToPdf.Web.Pages
         public List<Technology> Technologies { get; set; } = new List<Technology>();
         public List<OverviewMetric> Metrics { get; set; } = new List<OverviewMetric>();
 
+        public List<BillSaving> UsageNow { get; set; } = new List<BillSaving>();
+        public List<BillSaving> UsageAfter { get; set; } = new List<BillSaving>();
+
+        public List<BillSaving> DemandNow { get; set; } = new List<BillSaving>();
+        public List<BillSaving> DemandAfter { get; set; } = new List<BillSaving>();
+
+        public List<BillSaving> FixNow { get; set; } = new List<BillSaving>();
+        public List<BillSaving> FixAfter { get; set; } = new List<BillSaving>();
+
+        public List<BillSaving> ExportNow { get; set; } = new List<BillSaving>();
+        public List<BillSaving> ExportAfter { get; set; } = new List<BillSaving>();
+
         public void OnGet()
         {
             Technologies = new List<Technology>
@@ -165,6 +177,64 @@ namespace HtmlToPdf.Web.Pages
                 new OverviewMetric("Out of pocket", "$2.8M"),
                 new OverviewMetric("ROI", "5 years")
             };
+
+            UsageNow = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("Peak rate", "$0.1", "4,349", "$434.92"),
+                new BillSaving("Off-peak rate", "$0.29", "206,823", "$59,565.1"),
+                new BillSaving("Total Consumption", "", "", "$2111.72"),
+            };
+
+            UsageAfter = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("Peak rate", "-", "-", "-"),
+                new BillSaving("Off-peak rate", "$0.29", "206,333", "$60,000"),
+                new BillSaving("Total Consumption", "", "", "$2082.33"),
+            };
+
+            DemandNow = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Demand Cost", "-", "-", "-"),
+                new BillSaving("Total Demand Cost", "", "", "-"),
+            };
+
+            DemandAfter = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Demand Cost", "-", "-", "-"),
+                new BillSaving("Total Demand Cost", "", "", "-"),
+            };
+
+            FixNow = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Fixed Cost", "-", "-", "-"),
+                new BillSaving("Total Fixed Cost", "", "", "-"),
+            };
+
+            FixAfter = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Demand Cost", "-", "-", "-"),
+                new BillSaving("Total Demand Cost", "", "", "-"),
+            };
+
+            ExportNow = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Export Power", "-", "-", "-"),
+                new BillSaving("Total Export", "", "", "-"),
+            };
+
+            ExportAfter = new List<BillSaving>
+            {
+                new BillSaving("Description", "$/kwh", "Quantity", "Cost"),
+                new BillSaving("All Export Power", "-", "-", "-"),
+                new BillSaving("Total Export", "", "", "-"),
+            };
         }
 
         public IActionResult OnPost()
@@ -212,6 +282,22 @@ namespace HtmlToPdf.Web.Pages
         {
             Title = title;
             Value = value;
+        }
+    }
+
+    public class BillSaving
+    {
+        public string Description { get; set; }
+        public string Kwh { get; set; }
+        public string Qty { get; set; }
+        public string Cost { get; set; }
+
+        public BillSaving(string desc, string kwh, string qty, string cost)
+        {
+            Description = desc;
+            Kwh = kwh;
+            Qty = qty;
+            Cost = cost;
         }
     }
 }
