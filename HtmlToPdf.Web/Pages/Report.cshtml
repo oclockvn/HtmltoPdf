@@ -509,6 +509,79 @@
 
 </div>
 
+<div style="page-break-after: always; border: 1px solid #eee;"></div>
+
+<!-- quotation -->
+<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem;">QUOTATION</h2>
+
+    @foreach (var quote in Model.Quotations)
+    {
+        <div>
+            <h3 style="text-transform: uppercase; font-size: 1.5rem;">@quote.Header</h3>
+        </div>
+
+        <table style="width: 100%; color: #212529; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="background: #000; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem; color: #fff;">PRICE</th>
+                    <th style="background: #000; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem; color: #fff;">REBATE</th>
+                    <th style="background: #000; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem; color: #fff;">OUT OF POCKET</th>
+                    <th style="background: #000; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem; color: #fff;">OUT OF POCKET (Inc GST)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in quote.Primaries)
+                {
+                    <tr>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.Price</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.Rebate</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.OutOfPocket</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.OutOfPocketGst</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        foreach (var s in quote.Secondaries)
+        {
+            <div style="border: 1px solid #eee; border-top: none;">
+                <div style="padding: .75rem; text-transform: uppercase; border-bottom: 1px solid #eee;">@s.Category</div>
+                <div>
+                    <table style="width: 100%; color: #212529; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">Description</th>
+                                <th style="text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">Quantity</th>
+                                <th style="text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">Unit Price</th>
+                                <th style="text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in s.Products)
+                            {
+                                <tr>
+                                    <td style="vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">@product.Description</td>
+                                    <td style="vertical-align: middle; font-size: 1rem; padding: .75rem;">@product.Qty</td>
+                                    <td style="vertical-align: middle; font-size: 1rem; padding: .75rem;">@product.UnitPrice</td>
+                                    <td style="vertical-align: middle; font-size: 1rem; padding: .75rem;">@product.Price</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+
+        if (!string.IsNullOrWhiteSpace(quote.HelpText))
+        {
+            <div style="text-align: right; font-size: .8rem; color: #aaa; padding: 8px 0;">@quote.HelpText</div>
+        }
+
+        <div style="margin-bottom: 2rem;"></div>
+    }
+</div>
+
 @section Scripts {
     <script src="~/js/site.js"></script>
 }

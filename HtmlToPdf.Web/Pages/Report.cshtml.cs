@@ -23,6 +23,7 @@ namespace HtmlToPdf.Web.Pages
         public List<BillSaving> ExportAfter { get; set; } = new List<BillSaving>();
 
         public List<Assumption> Assumptions { get; set; }
+        public List<Quotation> Quotations { get; set; }
 
         public void OnGet()
         {
@@ -252,6 +253,8 @@ namespace HtmlToPdf.Web.Pages
                 new Assumption("METER DATA", string.Empty, true),
                 new Assumption("File", "<filename>")
             };
+
+            Quotations = Quotation.Gen();
         }
 
         public IActionResult OnPost()
@@ -329,6 +332,172 @@ namespace HtmlToPdf.Web.Pages
             Label = label;
             Value = value;
             IsTitle = isTitle;
+        }
+    }
+
+    public class Quotation
+    {
+        public string Header { get; set; }
+        public string HelpText { get; set; }
+        public List<QuotationPrimary> Primaries { get; set; } = new List<QuotationPrimary>();
+        public List<QuotationSecondary> Secondaries { get; set; } = new List<QuotationSecondary>();
+
+        public static List<Quotation> Gen()
+        {
+            return new List<Quotation>
+            {
+                new Quotation
+                {
+                    Header = "LED LIGHTING",
+                    HelpText = "All figures exclude GST unless specified",
+                    Primaries = new List<QuotationPrimary>
+                    {
+                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11")
+                    },
+                    Secondaries = new List<QuotationSecondary>
+                    {
+                        new QuotationSecondary
+                        {
+                            Category = "Price",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("Lorem ipsum dolor sit amet", 1, "$100", "$100"),
+                                new QuotationProduct("Sed ut perspiciatis unde omnis", 2, "$50", "$100"),
+                            }
+                        },
+                        new QuotationSecondary
+                        {
+                            Category = "Rebate",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("Ut enim ad minima veniam", 1, "$20", "$20")
+                            }
+                        }
+                    }
+                },
+                new Quotation
+                {
+                    Header = "POWER FACTOR CORRECTION",
+                    HelpText = "All figures exclude GST unless specified",
+                    Primaries = new List<QuotationPrimary>
+                    {
+                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11")
+                    },
+                    Secondaries = new List<QuotationSecondary>
+                    {
+                        new QuotationSecondary
+                        {
+                            Category = "Price",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("Quis autem vel", 1, "$100", "$100"),
+                                new QuotationProduct("Nam libero tempore", 2, "$50", "$100"),
+                            }
+                        },
+                        new QuotationSecondary
+                        {
+                            Category = "Rebate",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("sed quia non numquam eius", 1, "$20", "$20"),
+                                new QuotationProduct("Nemo enim ipsam voluptatem", 1, "$20", "$20")
+                            }
+                        }
+                    }
+                },
+                new Quotation
+                {
+                    Header = "SOLAR POWER",
+                    HelpText = "All figures exclude GST unless specified",
+                    Primaries = new List<QuotationPrimary>
+                    {
+                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11")
+                    },
+                    Secondaries = new List<QuotationSecondary>
+                    {
+                        new QuotationSecondary
+                        {
+                            Category = "Price",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("Quis autem vel", 1, "$100", "$100"),
+                                new QuotationProduct("consectetur adipiscing elit", 1, "$100", "$100"),
+                                new QuotationProduct("sed do eiusmod tempor incididunt", 1, "$100", "$100"),
+                                new QuotationProduct("ut labore et dolore magna aliqua", 1, "$100", "$100"),
+                                new QuotationProduct("Ut enim ad minim veniam", 1, "$100", "$100"),
+                                new QuotationProduct("quis nostrud exercitation", 1, "$100", "$100"),
+                                new QuotationProduct("ullamco laboris nisi", 1, "$100", "$100"),
+                                new QuotationProduct("ut aliquip ex ea", 1, "$100", "$100"),
+                                new QuotationProduct("commodo consequat", 1, "$100", "$100"),
+                                new QuotationProduct("Duis aute irure dolor", 1, "$100", "$100"),
+                                new QuotationProduct("Quis autem vel", 1, "$100", "$100"),
+                                new QuotationProduct("in reprehenderit", 1, "$100", "$100"),
+                                new QuotationProduct("sed do eiusmod tempor incididunt", 1, "$100", "$100"),
+                                new QuotationProduct("ut labore et dolore magna aliqua", 1, "$100", "$100"),
+                                new QuotationProduct("Ut enim ad minim veniam", 1, "$100", "$100"),
+                                new QuotationProduct("quis nostrud exercitation", 1, "$100", "$100"),
+                                new QuotationProduct("Nam libero tempore", 2, "$50", "$100"),
+                            }
+                        },
+                        new QuotationSecondary
+                        {
+                            Category = "Rebate",
+                            Products = new List<QuotationProduct>
+                            {
+                                new QuotationProduct("sed quia non numquam eius", 1, "$20", "$20"),
+                                new QuotationProduct("Nemo enim ipsam voluptatem", 1, "$20", "$20")
+                            }
+                        }
+                    }
+                },
+                new Quotation
+                {
+                    Header = "TOTAL",
+                    HelpText = "All figures exclude GST unless specified",
+                    Primaries = new List<QuotationPrimary>
+                    {
+                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11")
+                    }
+                }
+            };
+        }
+    }
+
+    public class QuotationPrimary
+    {
+        public string Price { get; set; }
+        public string Rebate { get; set; }
+        public string OutOfPocket { get; set; }
+        public string OutOfPocketGst { get; set; }
+
+        public QuotationPrimary(string price, string rebate, string oop, string gst)
+        {
+            Price = price;
+            Rebate = rebate;
+            OutOfPocket = oop;
+            OutOfPocketGst = gst;
+        }
+    }
+
+    public class QuotationSecondary
+    {
+        public string Category { get; set; }
+        public List<QuotationProduct> Products { get; set; }
+    }
+
+    public class QuotationProduct
+    {
+        public string Description { get; set; }
+        public int Qty { get; set; }
+        public string UnitPrice { get; set; }
+        public string Price { get; set; }
+
+        public QuotationProduct(string desc, int qty, string unit, string price)
+        {
+            Description = desc;
+            Qty = qty;
+            UnitPrice = unit;
+            Price = price;
         }
     }
 }
