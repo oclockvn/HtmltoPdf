@@ -534,10 +534,10 @@
                 @foreach (var p in quote.Primaries)
                 {
                     <tr>
-                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.Price</td>
-                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.Rebate</td>
-                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.OutOfPocket</td>
-                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: #d8d8d8;">@p.OutOfPocketGst</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: @(p.Highlight ? "#FBE7F2" : "#d8d8d8");">@p.Price</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: @(p.Highlight ? "#FBE7F2" : "#d8d8d8");">@p.Rebate</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: @(p.Highlight ? "#FBE7F2" : "#d8d8d8");">@p.OutOfPocket</td>
+                        <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6; background: @(p.Highlight ? "#FBE7F2" : "#d8d8d8");">@p.OutOfPocketGst</td>
                     </tr>
                 }
             </tbody>

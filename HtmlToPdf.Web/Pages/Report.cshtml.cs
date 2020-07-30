@@ -456,7 +456,7 @@ namespace HtmlToPdf.Web.Pages
                     HelpText = "All figures exclude GST unless specified",
                     Primaries = new List<QuotationPrimary>
                     {
-                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11")
+                        new QuotationPrimary("$111.11", "0", "$113.00", "$224.11"){ Highlight = true }
                     }
                 }
             };
@@ -469,6 +469,7 @@ namespace HtmlToPdf.Web.Pages
         public string Rebate { get; set; }
         public string OutOfPocket { get; set; }
         public string OutOfPocketGst { get; set; }
+        public bool Highlight { get; set; }
 
         public QuotationPrimary(string price, string rebate, string oop, string gst)
         {
