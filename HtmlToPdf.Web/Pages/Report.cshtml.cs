@@ -179,7 +179,9 @@ namespace HtmlToPdf.Web.Pages
                 MarginBottom = 0,
                 MarginLeft = 0,
                 MarginRight = 0,
-                MarginTop = 0
+                MarginTop = 0,
+                EnableJavaScript = true,
+                RenderDelay = 3000
             });
             var PDF = renderer.RenderUrlAsPdf("https://localhost:44345/Report");
             PDF.SaveAs($"dist/report_{DateTime.Now.ToString("ddMMyyyyhhmmss")}.pdf");
