@@ -22,6 +22,8 @@ namespace HtmlToPdf.Web.Pages
         public List<BillSaving> ExportNow { get; set; } = new List<BillSaving>();
         public List<BillSaving> ExportAfter { get; set; } = new List<BillSaving>();
 
+        public List<Assumption> Assumptions { get; set; }
+
         public void OnGet()
         {
             Technologies = new List<Technology>
@@ -235,6 +237,21 @@ namespace HtmlToPdf.Web.Pages
                 new BillSaving("All Export Power", "-", "-", "-"),
                 new BillSaving("Total Export", "", "", "-"),
             };
+
+            Assumptions = new List<Assumption>
+            {
+                new Assumption("OPPORTUNITY INFO", string.Empty, true),
+                new Assumption("Supply Address", "1205 Numurkan Rd, Katunga, VIX 3640"),
+                new Assumption("Meter ID", "6203928552"),
+                new Assumption("Average Monthly Electricity Bill (Ex GST)","$1000"),
+                new Assumption("TAX", string.Empty, true),
+                new Assumption("Registered for GST", "Yes"),
+                new Assumption("GRID", string.Empty, true),
+                new Assumption("Voltage & Arrangement", "230v"),
+                new Assumption("Frequency", "50hz"),
+                new Assumption("METER DATA", string.Empty, true),
+                new Assumption("File", "<filename>")
+            };
         }
 
         public IActionResult OnPost()
@@ -298,6 +315,20 @@ namespace HtmlToPdf.Web.Pages
             Kwh = kwh;
             Qty = qty;
             Cost = cost;
+        }
+    }
+
+    public class Assumption
+    {
+        public string Label { get; set; }
+        public string Value { get; set; }
+        public bool IsTitle { get; set; }
+
+        public Assumption(string label, string value, bool isTitle = false)
+        {
+            Label = label;
+            Value = value;
+            IsTitle = isTitle;
         }
     }
 }

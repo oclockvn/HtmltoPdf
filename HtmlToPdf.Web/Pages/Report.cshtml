@@ -483,6 +483,32 @@
 </div>
 <div style="page-break-after: always; border: 1px solid #eee;"></div>
 
+<!-- assumption -->
+<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem;">ASSUMPTIONS</h2>
+
+    <table style="width: 100%; color: #212529; border-collapse: collapse; border: 1px solid #eee;">
+        <tbody>
+            @foreach (var assumption in Model.Assumptions)
+            {
+                if (assumption.IsTitle)
+                {
+                    <tr>
+                        <td style="padding: .75rem; vertical-align: top; background: #d8d8d8;">@assumption.Label</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td style="padding: .75rem; vertical-align: top;"><b>@assumption.Label:</b> @assumption.Value</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+</div>
+
 @section Scripts {
     <script src="~/js/site.js"></script>
 }
