@@ -627,6 +627,41 @@
 
 <div style="page-break-after: always; border: 1px solid #eee;"></div>
 
+<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff; padding: 5mm;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem;">WARRANTIES</h2>
+
+    @foreach (var warranty in Model.Warranties)
+    {
+        <div style="margin-bottom: 10mm;">
+            <h3 style="text-transform: uppercase; font-size: 1.5rem;">@warranty.Category</h3>
+
+            <table style="width: 100%; color: #212529; border-collapse: collapse; border: 1px solid #d8d8d8;">
+                <thead>
+                    <tr>
+                        <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">WARRANTY ITEM</th>
+                        <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">PART NUMBER</th>
+                        <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">PRODUCT DESCRIPTION</th>
+                        <th style="background: #d8d8d8; text-transform: uppercase; vertical-align: middle; font-size: 1rem; font-weight: 500; padding: .75rem;">YEAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in warranty.Items)
+                    {
+                        <tr>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@item.Item</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@item.Part</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@item.Description</td>
+                            <td style="padding: .75rem; vertical-align: top; border-top: 1px solid #dee2e6;">@item.Year</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<div style="page-break-after: always; border: 1px solid #eee;"></div>
+
 @section Scripts {
     <script src="~/js/site.js"></script>
 }

@@ -24,6 +24,7 @@ namespace HtmlToPdf.Web.Pages
 
         public List<Assumption> Assumptions { get; set; }
         public List<Quotation> Quotations { get; set; }
+        public List<WarrantyList> Warranties { get; set; }
 
         public void OnGet()
         {
@@ -255,6 +256,7 @@ namespace HtmlToPdf.Web.Pages
             };
 
             Quotations = Quotation.Gen();
+            Warranties = WarrantyList.Gen();
         }
 
         public IActionResult OnPost()
@@ -499,6 +501,75 @@ namespace HtmlToPdf.Web.Pages
             Qty = qty;
             UnitPrice = unit;
             Price = price;
+        }
+    }
+
+    public class Warranty
+    {
+        public string Item { get; set; }
+        public string Part { get; set; }
+        public string Description { get; set; }
+        public int Year { get; set; }
+
+        public Warranty(string item, string part, string desc, int year)
+        {
+            Item = item;
+            Part = part;
+            Description = desc;
+            Year = year;
+        }
+    }
+
+    public class WarrantyList
+    {
+        public string Category { get; set; }
+        public List<Warranty> Items { get; set; }
+
+        public static List<WarrantyList> Gen()
+        {
+            return new List<WarrantyList>
+            {
+                new WarrantyList
+                {
+                    Category = "LED LIGHTING",
+                    Items = new List<Warranty>
+                    {
+                        new Warranty("WORKMANSHIP", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("SOLAR PANEL MANUFACTURERS", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("INVERTER MANUFACTURERS", "FRONIUS SYMO15.0-3-M", "JINKO PANEL 330W-BLK FRAME ", 10),
+                    }
+                },
+                new WarrantyList
+                {
+                    Category = "POWER FACTOR CORRECTION",
+                    Items = new List<Warranty>
+                    {
+                        new Warranty("WORKMANSHIP", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("SOLAR PANEL MANUFACTURERS", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("INVERTER MANUFACTURERS", "FRONIUS SYMO15.0-3-M", "JINKO PANEL 330W-BLK FRAME ", 10),
+                    }
+                },
+                new WarrantyList
+                {
+                    Category = "SOLAR POWER",
+                    Items = new List<Warranty>
+                    {
+                        new Warranty("WORKMANSHIP", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("SOLAR PANEL MANUFACTURERS", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("INVERTER MANUFACTURERS", "FRONIUS SYMO15.0-3-M", "JINKO PANEL 330W-BLK FRAME ", 10),
+                    }
+                },
+                new WarrantyList
+                {
+                    Category = "TECHONOLOGY NAME",
+                    Items = new List<Warranty>
+                    {
+                        new Warranty("WORKMANSHIP", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("SOLAR PANEL MANUFACTURERS", "JKM330M-60", "JINKO PANEL 330W-BLK FRAME ", 10),
+                        new Warranty("INVERTER MANUFACTURERS", "FRONIUS SYMO15.0-3-M", "JINKO PANEL 330W-BLK FRAME ", 10),
+                    }
+                },
+            };
         }
     }
 }
