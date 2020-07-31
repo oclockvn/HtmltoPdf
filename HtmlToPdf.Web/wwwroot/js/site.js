@@ -1,5 +1,6 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
+Chart.plugins.unregister(ChartDataLabels);
 
 Function.prototype.bind = Function.prototype.bind || function (thisp) {
     var fn = this;
@@ -9,9 +10,8 @@ Function.prototype.bind = Function.prototype.bind || function (thisp) {
 };
 
 // Write your Javascript code.
-var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var barChartData = {
-    labels: [...MONTHS, ...MONTHS],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [{
         label: 'Dataset 1',
         backgroundColor: '#f44336',
@@ -26,7 +26,7 @@ var barChartData = {
 
 window.onload = function () {
     var canvases = document.querySelectorAll(".chart");
-    for (let i = 0; i < canvases.length; i++) {
+    for (var i = 0; i < canvases.length; i++) {
         var canvas = canvases[i];
 
         var ctx = canvas.getContext('2d');
@@ -43,8 +43,7 @@ window.onload = function () {
                     text: 'Sample Chart'
                 },
                 animation: {
-                    onComplete: function() {
-                        console.log(`canvas render completed`);
+                    onComplete: function () {
                         //canvas.parentElement.querySelector('img').src = canvas.toDataURL();
                     }
                 }
@@ -52,6 +51,71 @@ window.onload = function () {
         });
     }
 
+    new Chart(document.getElementById('bill-now-chart').getContext('2d'), {
+        type: 'doughnut',
+        plugins: [ChartDataLabels],
+        data: {
+            datasets: [{
+                data: [100],
+                backgroundColor: ['#4D80B0'],
+                weight: 1,
+                datalabels: { display: false }
+            }, {
+                data: [20, 40, 30],
+                backgroundColor: ['#d8d8d8', '#e8e8e8', '#f6f6f6',],
+                weight: 5,
+                datalabels: {
+                    formatter: function (value, context) {
+                        return context.chart.data.labels[context.dataIndex] + ' ' + value;
+                    }
+                }
+            }],
+            labels: [
+                'Usage',
+                'Demand',
+                'Fixed',
+            ]
+        },
+        options: {
+            legend: { display: false },
+            label: { display: false },
+        }
+    });
+
+    new Chart(document.getElementById('bill-after-chart').getContext('2d'), {
+        type: 'doughnut',
+        plugins: [ChartDataLabels],
+        data: {
+            datasets: [{
+                data: [40],
+                backgroundColor: ['#7DD80C'],
+                weight: 1,
+                datalabels: { display: false }
+            }, {
+                data: [60],
+                backgroundColor: ['#4D80B0'],
+                weight: 1,
+                datalabels: { display: false }
+            }, {
+                data: [20, 40, 30],
+                backgroundColor: ['#d8d8d8', '#e8e8e8', '#f6f6f6',],
+                weight: 4,
+                datalabels: {
+                    formatter: function (value, context) {
+                        return context.chart.data.labels[context.dataIndex] + ' ' + value;
+                    }
+                }
+            }],
+            labels: [
+                'Usage',
+                'Demand',
+                'Fixed',
+            ]
+        },
+        options: {
+            legend: { display: false },
+            label: { display: false },
+        }
+    });
 };
 
-//"javascript:(document.querySelectorAll('canvas').forEach(canvas => { var data = canvas.getAttribute('data-chart'); document.querySelector(`img[data-chart=${data}]`).src = canvas.toDataURL(); }))"
