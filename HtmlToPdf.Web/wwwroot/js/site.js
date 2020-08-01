@@ -79,6 +79,7 @@ window.onload = function () {
         options: {
             legend: { display: false },
             label: { display: false },
+            cutoutPercentage: 20
         }
     });
 
@@ -87,13 +88,13 @@ window.onload = function () {
         plugins: [ChartDataLabels],
         data: {
             datasets: [{
-                data: [40],
-                backgroundColor: ['#7DD80C'],
+                data: [60, 40],
+                backgroundColor: ['transparent', '#7DD80C'],
                 weight: 1,
                 datalabels: { display: false }
             }, {
-                data: [60],
-                backgroundColor: ['#4D80B0'],
+                data: [60, 40],
+                backgroundColor: ['#4D80B0', 'transparent'],
                 weight: 1,
                 datalabels: { display: false }
             }, {
@@ -115,6 +116,7 @@ window.onload = function () {
         options: {
             legend: { display: false },
             label: { display: false },
+            cutoutPercentage: 20
         }
     });
 };
