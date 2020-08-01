@@ -9,8 +9,15 @@
     @@page {
         size: A4;
         margin: 0;
+    }
+    
+    .page {
         width: 210mm;
-        height: 297mm;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        min-height: 279mm;
+        margin-left: auto;
+        margin-right: auto;
     }
     </style>
 
@@ -18,7 +25,7 @@
     <button type="submit">Print</button>
 </form>
 
-<div style="size: A4;
+<div class="page" style="size: A4;
         width: 210mm;
         min-height: 297mm;
         margin-left: auto;
@@ -66,8 +73,8 @@
 </div>
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">ABOUT US</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">ABOUT US</h2>
     <p>
         Smart Energy Answers is a Team of Solar Professionals, not just a sales and marketing company. We use our own Clean Energy Council accredited installation teams and designers/engineers.  
     </p>
@@ -82,8 +89,8 @@
 </div>
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">OVERVIEW</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">OVERVIEW</h2>
     <div style="display: block;">
         <div>
             @foreach (var metric in Model.Metrics)
@@ -167,8 +174,8 @@
 </div>
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">ANNUAL CONSUMPTION &amp; DEMAND</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">ANNUAL CONSUMPTION &amp; DEMAND</h2>
     <div style="background: #eee; width: 200mm; height: 132mm;">
         <canvas width="200mm" height="132mm" id="chart1" data-chart="annual-consummtion1" class="chart" style="width: 200mm; height: 132mm;"></canvas>
         <!--<img />-->
@@ -181,8 +188,8 @@
 </div>
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">DAILY CONSUMPTION</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">DAILY CONSUMPTION</h2>
 
     <div style="background: #eee; width: 200mm; height: 132mm;">
         <canvas data-chart="daily-consumption1" class="chart" style="width: 200mm; height: 132mm;"></canvas>
@@ -196,8 +203,8 @@
 </div>
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">DAILY DEMAND</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">DAILY DEMAND</h2>
 
     <div style="background: #eee; width: 200mm; height: 132mm;">
         <canvas data-chart="daily-demand1" class="chart" style="width: 200mm; height: 132mm;"></canvas>
@@ -213,8 +220,8 @@
 <div style="page-break-after: always;"></div>
 
 <!-- bill saving -->
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">ELECTRICITY BILL SAVINGS</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">ELECTRICITY BILL SAVINGS</h2>
 
     <div style="margin: 2rem 0 1rem;">
         <h3 style="text-transform: uppercase; margin: 0; font-size: 1.5rem; float: left;">BILL REDUCTION</h3>
@@ -465,8 +472,8 @@
 <div style="page-break-after: always;"></div>
 
 <!-- cash flow -->
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">CASHFLOW</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">CASHFLOW</h2>
     <div style="background: #eee; width: 200mm; height: 132mm;">
         <canvas width="200mm" height="132mm" id="chart1" data-chart="annual-consummtion1" class="chart" style="width: 200mm; height: 132mm;"></canvas>
         <!--<img />-->
@@ -480,8 +487,8 @@
 <div style="page-break-after: always;"></div>
 
 <!-- assumption -->
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">ASSUMPTIONS</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">ASSUMPTIONS</h2>
 
     <table style="width: 100%; color: #212529; border-collapse: collapse; border: 1px solid #eee;">
         <tbody>
@@ -508,8 +515,8 @@
 <div style="page-break-after: always;"></div>
 
 <!-- quotation -->
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">QUOTATION</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">QUOTATION</h2>
 
     @foreach (var quote in Model.Quotations)
     {
@@ -581,8 +588,8 @@
 <div style="page-break-after: always;"></div>
 
 <!-- scope of works -->
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">SCOPE OF WORKS</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">SCOPE OF WORKS</h2>
 
     <h3 style="font-size: 1.2rem;">LED LIGHTING</h3>
     <p>
@@ -623,8 +630,8 @@
 
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">WARRANTIES</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">WARRANTIES</h2>
 
     @foreach (var warranty in Model.Warranties)
     {
@@ -658,8 +665,8 @@
 
 <div style="page-break-after: always;"></div>
 
-<div style="size: A4; width: 210mm; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
-    <h2 style="text-transform: uppercase; margin-bottom: 3rem; border-top: 10px solid #4d80b0; padding-top: 2rem;">ACCEPTANCE</h2>
+<div class="page" style="size: A4; min-height: 297mm; margin-left: auto; margin-right: auto; background: #fff;">
+    <h2 style="text-transform: uppercase; margin-bottom: 3rem; padding-top: 2rem;">ACCEPTANCE</h2>
 
     <p>
         nisoi vehicula luctus. Suspendisse sollicitudin diam lorem, a ultricies augue lacinia eu. Etiam quis ipsum sed velit fringilla porttitor sed sit amet mauris. Nullam nunc nisi, tempus sed vehicula sed, dapibus vitae tellus.<br /><br />
