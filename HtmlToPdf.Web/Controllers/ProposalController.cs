@@ -34,21 +34,20 @@ namespace HtmlToPdf.Web.Controllers
 
             var filename = Guid.NewGuid().ToString("N") + ".pdf";
             var outputDir = Path.Combine(environment.ContentRootPath, "proposal");
-            //var rotativaLocation = Path.Combine(environment.WebRootPath, "wkhtml", "wkhtmltopdf.exe");
             if (!Directory.Exists(outputDir))
             {
                 Directory.CreateDirectory(outputDir);
             }
 
             var outputFile = Path.Combine(outputDir, filename);
-            var footerPath = Path.Combine(environment.WebRootPath, "wkhtml", "footer.html");
-            var headerPath = Path.Combine(environment.WebRootPath, "wkhtml", "header.html");
+            var footerPath = Path.Combine(environment.WebRootPath, "templates", "footer.html");
+            var footerTemplate = await System.IO.File.ReadAllTextAsync(footerPath);
 
             await page.PdfAsync(outputFile, new PdfOptions
             {
                 DisplayHeaderFooter = true,
                 HeaderTemplate = "<style>#header, #footer { padding: 0 !important; }</style><div style='width: 210mm; border-top: 10px solid #4d80b0;'></div>",
-                //FooterTemplate = "<div style='height: 50px; background-color: green; font-size: 12px;'></div>",
+                FooterTemplate = footerTemplate,
                 Format = PaperFormat.A4,
                 PrintBackground = true,
                 PreferCSSPageSize = true,
