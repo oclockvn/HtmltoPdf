@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HtmlToPdf.Web.Controllers
 {
-    [Route("proposal")]
+    [Route("export")]
     [ApiController]
     public class ProposalController : ControllerBase
     {
@@ -18,12 +18,6 @@ namespace HtmlToPdf.Web.Controllers
         public ProposalController(IWebHostEnvironment environment)
         {
             this.environment = environment;
-        }
-
-        [Route("dump")]
-        public IActionResult Dump()
-        {
-            return Ok(new { message = "hello" });
         }
 
         [HttpGet, Route("pdf")]
@@ -36,6 +30,7 @@ namespace HtmlToPdf.Web.Controllers
             });
             var page = await browser.NewPageAsync();
             await page.GoToAsync("https://localhost:44345/report");
+            await page.EmulateMediaTypeAsync(MediaType.Screen);
 
             var filename = Guid.NewGuid().ToString("N") + ".pdf";
             var outputDir = Path.Combine(environment.ContentRootPath, "proposal");
@@ -52,16 +47,13 @@ namespace HtmlToPdf.Web.Controllers
             await page.PdfAsync(outputFile, new PdfOptions
             {
                 DisplayHeaderFooter = true,
-                FooterTemplate = System.IO.File.ReadAllText(footerPath),
-                HeaderTemplate = "<div style='border-top: 10px solid #4d80b0;'></div>",
+                HeaderTemplate = "<style>#header, #footer { padding: 0 !important; }</style><div style='width: 210mm; border-top: 10px solid #4d80b0;'></div>",
+                //FooterTemplate = "<div style='height: 50px; background-color: green; font-size: 12px;'></div>",
                 Format = PaperFormat.A4,
                 PrintBackground = true,
-                MarginOptions = new MarginOptions
-                {
-                    Bottom = "20mm",
-                    Top = "10mm"
-                }
+                PreferCSSPageSize = true,
             });
+
             return Ok(new { msg = "Ok" });
         }
 

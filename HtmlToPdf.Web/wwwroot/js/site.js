@@ -2,12 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 Chart.plugins.unregister(ChartDataLabels);
 
-Function.prototype.bind = Function.prototype.bind || function (thisp) {
-    var fn = this;
-    return function () {
-        return fn.apply(thisp, arguments);
-    };
-};
+//Function.prototype.bind = Function.prototype.bind || function (thisp) {
+//    var fn = this;
+//    return function () {
+//        return fn.apply(thisp, arguments);
+//    };
+//};
 
 // Write your Javascript code.
 var barChartData = {
@@ -21,7 +21,6 @@ var barChartData = {
             5, 10, 15, 12, 24, 30, 59, 30, 60, 12, 4, 6, 8, 41, 34, 56, 74, 24, 23, 11, 46, 67, 65, 50, 22, 23, 25, 62, 67, 52, 26, 48, 33, 32, 21
         ]
     }]
-
 };
 
 window.onload = function () {
@@ -41,11 +40,6 @@ window.onload = function () {
                 title: {
                     display: true,
                     text: 'Sample Chart'
-                },
-                animation: {
-                    onComplete: function () {
-                        //canvas.parentElement.querySelector('img').src = canvas.toDataURL();
-                    }
                 }
             }
         });
@@ -120,19 +114,3 @@ window.onload = function () {
         }
     });
 };
-
-$(".report-button").on("click", function(e) {
-    e.preventDefault();
-    $(".loading").show();
-
-    $.ajax({
-        url: "/proposal/export",
-        method: "post",
-    }).then(function(result) {
-        console.log(result);
-    }, function(err) {
-        console.log(`something went wrong`, err);
-    }).always(function() {
-        $(".loading").hide();
-    });
-});
