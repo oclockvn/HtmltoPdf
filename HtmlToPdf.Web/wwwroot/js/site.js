@@ -121,3 +121,18 @@ window.onload = function () {
     });
 };
 
+$(".report-button").on("click", function(e) {
+    e.preventDefault();
+    $(".loading").show();
+
+    $.ajax({
+        url: "/proposal/export",
+        method: "post",
+    }).then(function(result) {
+        console.log(result);
+    }, function(err) {
+        console.log(`something went wrong`, err);
+    }).always(function() {
+        $(".loading").hide();
+    });
+});
